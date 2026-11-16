@@ -8,7 +8,7 @@ namespace Core.Models
     // Model knjige (#knjiga)
     public class Knjiga : ISerijalizacija
     {
-        public string ISBN { get; set; } = "";
+        public string Isbn { get; set; } = "";
         public string Naziv { get; set; } = "";
         public string Zanr { get; set; } = "";
         public int GodinaIzdanja { get; set; }
@@ -34,7 +34,7 @@ namespace Core.Models
             }
 
             string[] vrednosti = new string[10];
-            vrednosti[0] = ISBN;
+            vrednosti[0] = Isbn;
             vrednosti[1] = Naziv;
             vrednosti[2] = Zanr;
             vrednosti[3] = GodinaIzdanja.ToString();
@@ -49,7 +49,7 @@ namespace Core.Models
 
         public void FromCSV(string[] values)
         {
-            ISBN = values[0];
+            Isbn = values[0];
             Naziv = values[1];
             Zanr = values[2];
             GodinaIzdanja = int.Parse(values[3]);
@@ -71,7 +71,7 @@ namespace Core.Models
 
         public override string ToString()
         {
-            return ISBN + " " + Naziv;
+            return Isbn + " " + Naziv;
         }
     }
 }
