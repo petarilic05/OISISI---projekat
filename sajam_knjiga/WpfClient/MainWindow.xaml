@@ -1,12 +1,63 @@
 ﻿<Window x:Class="WpfClient.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfClient"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Sajam knjiga"
+        WindowStartupLocation="CenterScreen">
 
-    </Grid>
+    <DockPanel>
+
+        <!-- Dusanov deo: Menu Bar sa DockPanel.Dock="Top" -->
+
+        <!-- Dusanov deo: Status Bar sa DockPanel.Dock="Bottom" -->
+
+        <!-- Toolbar: 3 dugmeta + polje za pretragu + dugme za pretragu -->
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar>
+                <Button x:Name="DodajDugme" Content="➕" ToolTip="Dodaj" Width="30"/>
+                <Button x:Name="IzmeniDugme" Content="✏" ToolTip="Izmeni" Width="30"/>
+                <Button x:Name="ObrisiDugme" Content="🗑" ToolTip="Obriši" Width="30"/>
+                <Separator/>
+                <TextBox x:Name="PretragaTextBox" Width="200"/>
+                <Button x:Name="PretragaDugme" Content="🔍" ToolTip="Pretraži" Width="30"/>
+            </ToolBar>
+        </ToolBarTray>
+
+        <!-- Centralni panel sa tabovima -->
+        <TabControl x:Name="Tabovi" Margin="10">
+
+            <TabItem Header="Posetioci">
+                <!-- Dusanov deo: tabela posetilaca -->
+                <Grid/>
+            </TabItem>
+
+            <TabItem Header="Autori">
+                <DataGrid x:Name="AutoriGrid" AutoGenerateColumns="False"
+                          IsReadOnly="True" CanUserAddRows="False"
+                          SelectionMode="Single" Margin="5">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Ime" Binding="{Binding Ime}" Width="*"/>
+                        <DataGridTextColumn Header="Prezime" Binding="{Binding Prezime}" Width="*"/>
+                        <DataGridTextColumn Header="Broj lične karte" Binding="{Binding BrojLicneKarte}" Width="*"/>
+                        <DataGridTextColumn Header="Datum rođenja" Binding="{Binding DatumRodjenja, StringFormat=dd.MM.yyyy.}" Width="*"/>
+                        <DataGridTextColumn Header="E-mejl" Binding="{Binding Email}" Width="2*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+
+            <TabItem Header="Knjige">
+                <DataGrid x:Name="KnjigeGrid" AutoGenerateColumns="False"
+                          IsReadOnly="True" CanUserAddRows="False"
+                          SelectionMode="Single" Margin="5">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ISBN" Binding="{Binding Isbn}" Width="*"/>
+                        <DataGridTextColumn Header="Naziv" Binding="{Binding Naziv}" Width="2*"/>
+                        <DataGridTextColumn Header="Cena" Binding="{Binding Cena}" Width="*"/>
+                        <DataGridTextColumn Header="Godina izdanja" Binding="{Binding GodinaIzdanja}" Width="*"/>
+                        <DataGridTextColumn Header="Žanr" Binding="{Binding Zanr}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+
+        </TabControl>
+    </DockPanel>
 </Window>
