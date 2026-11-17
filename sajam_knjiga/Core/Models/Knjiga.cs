@@ -12,7 +12,7 @@ namespace Core.Models
         public string Naziv { get; set; } = "";
         public string Zanr { get; set; } = "";
         public int GodinaIzdanja { get; set; }
-        public double Cena { get; set; }
+        public decimal Cena { get; set; }
         public int BrojStrana { get; set; }
 
         public List<int> AutoriIds { get; set; } = new List<int>();
@@ -53,7 +53,7 @@ namespace Core.Models
             Naziv = values[1];
             Zanr = values[2];
             GodinaIzdanja = int.Parse(values[3]);
-            Cena = double.Parse(values[4], CultureInfo.InvariantCulture);
+            Cena = decimal.Parse(values[4], CultureInfo.InvariantCulture);
             BrojStrana = int.Parse(values[5]);
 
   
